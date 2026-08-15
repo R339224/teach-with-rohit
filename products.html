@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Products | Teach With Rohit</title>
 
     <style>
@@ -22,6 +23,7 @@
 
         .product {
             width: 300px;
+            max-width: 85%;
             margin: 40px auto;
             padding: 25px;
             background: #101d30;
@@ -33,8 +35,14 @@
             margin-bottom: 15px;
         }
 
+        .product p {
+            color: #c8d4e3;
+            line-height: 1.5;
+        }
+
         .buy-btn {
             display: inline-block;
+            margin-top: 10px;
             padding: 13px 25px;
             background: #ff9900;
             color: white;
@@ -46,6 +54,14 @@
         .buy-btn:hover {
             background: #ffb52e;
         }
+
+        .note {
+            margin: 25px auto;
+            max-width: 500px;
+            color: #8fa3ba;
+            font-size: 13px;
+            padding: 0 20px;
+        }
     </style>
 </head>
 
@@ -54,13 +70,59 @@
     <h1>🔥 Recommended Products</h1>
 
     <div class="product">
-        <h2><h2>Zebronics Wireless Keyboard</h2></h2>
-        <p>Check price and details on Amazon</p>
 
-        <a class="buy-btn" href="https://link.amazon/B0i7McJLf" target="_blank" rel="nofollow sponsored">
+        <h2 id="productName">Recommended Product</h2>
+
+        <p>
+            Check price and details of this product on Amazon.
+        </p>
+
+        <a id="buyButton" class="buy-btn" href="#" target="_blank" rel="nofollow sponsored noopener">
             🛒 Buy on Amazon
         </a>
+
     </div>
+
+    <div class="note">
+        As an Amazon Associate, I earn from qualifying purchases.
+    </div>
+
+
+    <script>
+
+        const params = new URLSearchParams(window.location.search);
+
+        const productName = params.get("name");
+        const amazonLink = params.get("link");
+
+
+        if (productName) {
+            document.getElementById("productName").textContent =
+                productName;
+        }
+
+
+        if (amazonLink) {
+
+            let decodedLink;
+
+            try {
+                decodedLink = decodeURIComponent(amazonLink);
+            } catch (error) {
+                decodedLink = amazonLink;
+            }
+
+            document.getElementById("buyButton").href =
+                decodedLink;
+
+        } else {
+
+            document.getElementById("buyButton").href =
+                "https://www.amazon.in/";
+
+        }
+
+    </script>
 
 </body>
 
