@@ -787,373 +787,410 @@
     </footer>
 <!-- ============================= -->
 <!-- PROFESSIONAL LEARNING HUB -->
-<!-- Paste this code before </body> -->
 <!-- ============================= -->
 
 <style>
     .learning-hub {
-        max-width: 1200px;
-        margin: auto;
+        padding: 100px 7%;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(0, 234, 255, .08), transparent 30%),
+            radial-gradient(circle at 80% 80%, rgba(0, 234, 255, .06), transparent 30%),
+            #030712;
     }
 
-    .learning-intro {
-        max-width: 750px;
-        margin: -25px auto 40px;
+    .learning-header {
+        max-width: 850px;
+        margin: auto;
         text-align: center;
-        color: #929db5;
-        line-height: 1.7;
+        margin-bottom: 55px;
     }
 
-    .learning-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 22px;
+    .learning-header h2 {
+        font-size: 44px;
+        margin-bottom: 15px;
+    }
+
+    .learning-header h2 span {
+        color: #00eaff;
+    }
+
+    .learning-header p {
+        color: #929db5;
+        line-height: 1.8;
+        font-size: 16px;
+    }
+
+    .course-grid {
         max-width: 1200px;
         margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
     }
 
-    .learning-card {
-        position: relative;
-        padding: 28px;
-        border-radius: 22px;
+    .course-card {
         background: linear-gradient(145deg, #0a1224, #050a16);
         border: 1px solid rgba(255, 255, 255, .08);
+        border-radius: 22px;
+        padding: 30px;
         transition: .35s;
-        overflow: hidden;
     }
 
-    .learning-card:hover {
+    .course-card:hover {
         transform: translateY(-8px);
         border-color: #00eaff;
-        box-shadow: 0 0 35px rgba(0, 234, 255, .14);
+        box-shadow: 0 0 30px rgba(0, 234, 255, .12);
     }
 
-    .learning-icon {
+    .course-icon {
         font-size: 42px;
         margin-bottom: 18px;
     }
 
-    .learning-card h3 {
-        font-size: 21px;
-        margin-bottom: 10px;
+    .course-card h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
     }
 
-    .learning-card p {
+    .course-card p {
         color: #929db5;
+        line-height: 1.7;
         font-size: 14px;
-        line-height: 1.65;
-        min-height: 70px;
     }
 
-    .learning-tags {
-        display: flex;
-        gap: 7px;
-        flex-wrap: wrap;
-        margin: 17px 0;
-    }
-
-    .learning-tags span {
-        padding: 6px 10px;
-        border-radius: 20px;
-        background: rgba(0, 234, 255, .07);
-        color: #00eaff;
-        font-size: 11px;
-    }
-
-    .learning-start {
-        border: none;
-        cursor: pointer;
-        padding: 11px 18px;
+    .course-button {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 11px 20px;
         border-radius: 25px;
         background: #00eaff;
         color: #001016;
+        text-decoration: none;
         font-weight: bold;
-        transition: .3s;
+        cursor: pointer;
+        border: none;
     }
 
-    .learning-start:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 20px rgba(0, 234, 255, .3);
-    }
-
-    /* COURSE PANEL */
-
-    .course-panel {
+    .lesson-area {
         display: none;
-        max-width: 1200px;
-        margin: 35px auto 0;
-        padding: 30px;
-        border-radius: 24px;
-        background: linear-gradient(145deg, #0a1224, #050a16);
-        border: 1px solid rgba(0, 234, 255, .15);
+        max-width: 950px;
+        margin: 50px auto 0;
     }
 
-    .course-panel.active {
+    .lesson-area.active {
         display: block;
     }
 
-    .course-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 20px;
-        margin-bottom: 25px;
+    .lesson-box {
+        background: linear-gradient(145deg, #0a1224, #050a16);
+        border: 1px solid rgba(0, 234, 255, .18);
+        border-radius: 24px;
+        padding: 38px;
     }
 
-    .course-top h3 {
+    .lesson-top {
+        border-bottom: 1px solid rgba(255, 255, 255, .08);
+        padding-bottom: 25px;
+        margin-bottom: 28px;
+    }
+
+    .lesson-top small {
+        color: #00eaff;
+        font-weight: bold;
+    }
+
+    .lesson-top h3 {
         font-size: 30px;
-        margin-bottom: 8px;
-    }
-
-    .course-top p {
-        color: #929db5;
-    }
-
-    .close-course {
-        border: 1px solid #00eaff;
-        background: transparent;
-        color: #00eaff;
-        padding: 9px 15px;
-        border-radius: 22px;
-        cursor: pointer;
-    }
-
-    .course-progress {
-        height: 8px;
-        background: #111a2d;
-        border-radius: 20px;
-        overflow: hidden;
-        margin-bottom: 25px;
-    }
-
-    .course-progress-bar {
-        height: 100%;
-        width: 10%;
-        background: #00eaff;
-        transition: .3s;
-    }
-
-    .lesson-layout {
-        display: grid;
-        grid-template-columns: 255px 1fr;
-        gap: 22px;
-    }
-
-    .lesson-list {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .lesson-button {
-        width: 100%;
-        text-align: left;
-        padding: 12px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, .07);
-        background: #071021;
-        color: #aeb8d0;
-        cursor: pointer;
-        transition: .25s;
-    }
-
-    .lesson-button:hover,
-    .lesson-button.active {
-        border-color: #00eaff;
-        color: #00eaff;
-        background: rgba(0, 234, 255, .05);
-    }
-
-    .lesson-content {
-        padding: 25px;
-        border-radius: 18px;
-        background: #071021;
-        border: 1px solid rgba(255, 255, 255, .07);
+        margin-top: 10px;
     }
 
     .lesson-content h4 {
-        font-size: 26px;
-        margin-bottom: 15px;
-    }
-
-    .lesson-content h5 {
         color: #00eaff;
-        font-size: 17px;
-        margin: 24px 0 10px;
+        font-size: 21px;
+        margin-top: 28px;
+        margin-bottom: 12px;
     }
 
-    .lesson-content p,
-    .lesson-content li {
-        color: #aeb8d0;
-        line-height: 1.75;
+    .lesson-content p {
+        color: #c1c9da;
+        line-height: 1.9;
+        font-size: 16px;
     }
 
     .lesson-content ul {
-        padding-left: 22px;
+        padding-left: 25px;
+        color: #c1c9da;
+        line-height: 1.9;
     }
 
-    .code-area {
-        position: relative;
-        margin-top: 15px;
-        padding: 20px;
-        background: #02050b;
+    .lesson-content li {
+        margin-bottom: 6px;
+    }
+
+    .lesson-code {
+        background: #02050c;
+        border: 1px solid rgba(0, 234, 255, .15);
         border-radius: 14px;
-        border: 1px solid rgba(0, 234, 255, .12);
+        padding: 20px;
+        margin-top: 15px;
         overflow-x: auto;
     }
 
-    .code-area pre {
-        color: #d9faff;
+    .lesson-code pre {
+        margin: 0;
+        color: #d7faff;
         font-family: Consolas, monospace;
-        font-size: 13px;
+        line-height: 1.7;
         white-space: pre-wrap;
     }
 
-    .copy-button {
-        position: absolute;
-        top: 9px;
-        right: 9px;
-        border: 1px solid #00eaff;
-        background: transparent;
-        color: #00eaff;
-        padding: 5px 10px;
-        border-radius: 15px;
-        cursor: pointer;
+    .lesson-practice {
+        margin-top: 25px;
+        padding: 22px;
+        border-left: 4px solid #00eaff;
+        background: rgba(0, 234, 255, .05);
+        border-radius: 10px;
+    }
+
+    .lesson-practice p {
+        margin: 0;
     }
 
     .lesson-navigation {
         display: flex;
         justify-content: space-between;
-        margin-top: 25px;
-        gap: 10px;
+        gap: 15px;
+        margin-top: 35px;
     }
 
-    .lesson-navigation button {
-        padding: 11px 18px;
-        border-radius: 22px;
+    .lesson-nav-btn {
+        padding: 12px 22px;
+        border-radius: 25px;
         border: 1px solid #00eaff;
         background: transparent;
         color: #00eaff;
         cursor: pointer;
+        font-weight: bold;
     }
 
-    .lesson-navigation button:disabled {
-        opacity: .3;
-        cursor: not-allowed;
+    .lesson-nav-btn:hover {
+        background: #00eaff;
+        color: #001016;
+    }
+
+    .close-course {
+        display: block;
+        margin: 30px auto 0;
+        padding: 12px 24px;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, .2);
+        background: transparent;
+        color: white;
+        cursor: pointer;
     }
 
     @media(max-width:700px) {
-        .course-panel {
-            padding: 18px;
+
+        .learning-hub {
+            padding: 70px 5%;
         }
 
-        .course-top {
+        .learning-header h2 {
+            font-size: 34px;
+        }
+
+        .lesson-box {
+            padding: 24px;
+        }
+
+        .lesson-top h3 {
+            font-size: 24px;
+        }
+
+        .lesson-content p {
+            font-size: 15px;
+        }
+
+        .lesson-navigation {
             flex-direction: column;
-        }
-
-        .lesson-layout {
-            grid-template-columns: 1fr;
-        }
-
-        .lesson-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
         }
     }
 </style>
 
 
-<section id="learning-hub">
+<section class="learning-hub" id="learning">
 
-    <div class="section-title">
+    <div class="learning-header">
 
-        <h2>🎓 Professional Learning Hub</h2>
+        <h2>
+            📚 <span>Professional Learning Hub</span>
+        </h2>
 
         <p>
-            Learn technology step-by-step with practical lessons,
-            examples and beginner-friendly practice.
+            Learn AI, programming, web development, cybersecurity,
+            Linux, Windows and online safety through detailed,
+            beginner-friendly lessons.
         </p>
 
     </div>
 
 
-    <p class="learning-intro">
+    <div class="course-grid">
 
-        No random card collection. Every course is structured
-        from basics to practical concepts so you can actually
-        learn and build your skills.
+        <div class="course-card">
+            <div class="course-icon">🌐</div>
+            <h3>Web Development</h3>
+            <p>
+                Learn how websites are created using HTML,
+                CSS and JavaScript from beginner level.
+            </p>
+            <button class="course-button" onclick="openCourse('web')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
-    </p>
+
+        <div class="course-card">
+            <div class="course-icon">🐍</div>
+            <h3>Python Programming</h3>
+            <p>
+                Learn Python programming concepts with
+                explanations, examples and practice.
+            </p>
+            <button class="course-button" onclick="openCourse('python')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
 
-    <div class="learning-hub">
+        <div class="course-card">
+            <div class="course-icon">🐧</div>
+            <h3>Kali Linux</h3>
+            <p>
+                Learn Linux fundamentals, terminal usage
+                and ethical security concepts safely.
+            </p>
+            <button class="course-button" onclick="openCourse('kali')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
-        <div class="learning-grid" id="learningGrid"></div>
+
+        <div class="course-card">
+            <div class="course-icon">🛡️</div>
+            <h3>Cybersecurity Basics</h3>
+            <p>
+                Understand cybersecurity concepts,
+                threats and practical defensive habits.
+            </p>
+            <button class="course-button" onclick="openCourse('cyber')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
 
-        <div class="course-panel" id="coursePanel">
+        <div class="course-card">
+            <div class="course-icon">🪟</div>
+            <h3>Windows & Computer Tips</h3>
+            <p>
+                Learn useful Windows features,
+                troubleshooting and computer skills.
+            </p>
+            <button class="course-button" onclick="openCourse('windows')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
-            <div class="course-top">
 
-                <div>
+        <div class="course-card">
+            <div class="course-icon">🔐</div>
+            <h3>Online Safety</h3>
+            <p>
+                Learn how to protect accounts, devices
+                and personal information online.
+            </p>
+            <button class="course-button" onclick="openCourse('safety')">
+                Start 10 Lessons →
+            </button>
+        </div>
 
-                    <h3 id="courseTitle"></h3>
+    </div>
 
-                    <p id="courseDescription"></p>
 
-                </div>
+    <div class="lesson-area" id="lessonArea">
 
-                <button class="close-course" onclick="closeLearningCourse()">
+        <div class="lesson-box">
 
-                    ← Back
+            <div class="lesson-top">
 
-                </button>
+                <small id="lessonNumber">
+                    LESSON 1 OF 10
+                </small>
+
+                <h3 id="lessonTitle">
+                    Topic
+                </h3>
 
             </div>
 
 
-            <div class="course-progress">
+            <div class="lesson-content">
 
-                <div class="course-progress-bar" id="courseProgress">
-                </div>
+                <h4>📖 Definition</h4>
 
-            </div>
-
-
-            <div class="lesson-layout">
+                <p id="lessonDefinition"></p>
 
 
-                <div class="lesson-list" id="lessonList">
-                </div>
+                <h4>💡 Example</h4>
+
+                <p id="lessonExample"></p>
 
 
-                <div class="lesson-content">
+                <div id="codeSection">
 
-                    <h4 id="lessonTitle"></h4>
+                    <h4>💻 Code / Practical Example</h4>
 
-                    <div id="lessonBody"></div>
+                    <div class="lesson-code">
 
-
-                    <div class="lesson-navigation">
-
-                        <button id="previousLesson" onclick="changeLearningLesson(-1)">
-
-                            ← Previous
-
-                        </button>
-
-
-                        <button id="nextLesson" onclick="changeLearningLesson(1)">
-
-                            Next →
-
-                        </button>
+                        <pre id="lessonCode"></pre>
 
                     </div>
 
                 </div>
 
+
+                <h4>📝 Practice Session</h4>
+
+                <div class="lesson-practice">
+
+                    <p id="lessonPractice"></p>
+
+                </div>
+
+
+                <h4>🎯 What You Learned</h4>
+
+                <p id="lessonLearned"></p>
+
             </div>
+
+
+            <div class="lesson-navigation">
+
+                <button class="lesson-nav-btn" onclick="previousLesson()">
+                    ← Previous
+                </button>
+
+                <button class="lesson-nav-btn" onclick="nextLesson()">
+                    Next Lesson →
+                </button>
+
+            </div>
+
+
+            <button class="close-course" onclick="closeCourse()">
+                ← Back to Courses
+            </button>
 
         </div>
 
@@ -1164,1611 +1201,1743 @@
 
 <script>
 
-    const learningCourses = [
+    /* ==========================================
+       PROFESSIONAL LEARNING HUB
+       ========================================== */
 
-        {
-            id: "web",
-            icon: "🌐",
-            title: "Web Development",
-            description:
-                "HTML, CSS and JavaScript ko zero se practical level tak samjho.",
-            tags: ["HTML", "CSS", "JavaScript"],
-            lessons: [
 
-                {
-                    title: "HTML kya hai?",
-                    text:
-                        "HTML website ka basic structure banata hai. Browser HTML ko read karke webpage display karta hai.",
-                    points: [
-                        "HTML website ka structure hota hai",
-                        "Tags aur elements ka use hota hai",
-                        "Headings aur paragraphs banana",
-                        "HTML file ka extension .html hota hai"
-                    ],
-                    code:
-                        `<!DOCTYPE html>
+    const courses = {
+
+
+        /* ==========================================
+           WEB DEVELOPMENT
+           ========================================== */
+
+        web: [
+
+            {
+                title: "What is Web Development?",
+
+                definition:
+                    "Web Development ka matlab websites aur web applications ko create, design, develop aur maintain karne ki process hai. Jab hum kisi website ko browser mein open karte hain, jaise homepage, buttons, menus, images, forms ya login system, in sab ke peeche web development ka kaam hota hai. Web development mein HTML webpage ka structure banata hai, CSS us structure ko design karta hai aur JavaScript website mein interaction aur functionality add karta hai. Ek complete website banane mein planning, coding, testing, responsiveness, security aur deployment jaise steps bhi shamil ho sakte hain.",
+
+                example:
+                    "Socho tum ek school website bana rahe ho. HTML se tum heading, paragraph, image aur buttons banaoge. CSS se unka color, size, spacing aur layout set karoge. JavaScript se button click, menu aur form jaise interactive features add kar sakte ho.",
+
+                code:
+                    `<!DOCTYPE html>
 <html>
 <head>
-    <title>My Website</title>
+<title>My Website</title>
 </head>
-
 <body>
 
-    <h1>Hello Rohit</h1>
-
-    <p>My first website.</p>
+<h1>Hello Rohit</h1>
+<p>Welcome to my website.</p>
 
 </body>
-</html>`
-                },
+</html>`,
 
-                {
-                    title: "HTML Links & Images",
-                    text:
-                        "Website mein doosri website ko link karna aur images add karna seekho.",
-                    points: [
-                        "Anchor tag",
-                        "Image tag",
-                        "href attribute",
-                        "alt attribute"
-                    ],
-                    code:
-                        `<a href="https://example.com">
-    Visit Website
+                practice:
+                    "Ek simple HTML page banao jisme apna naam heading ke roop mein aur apne baare mein ek paragraph likho.",
+
+                learned:
+                    "Web development kya hai aur HTML, CSS aur JavaScript ka basic role kya hota hai."
+            },
+
+
+            {
+                title: "HTML kya hai?",
+
+                definition:
+                    "HTML ka full form HyperText Markup Language hai. HTML kisi webpage ka basic structure banane ke liye use hota hai. Browser HTML code ko read karke decide karta hai ki webpage par heading, paragraph, image, link, button aur doosre elements kis form mein dikhne chahiye. HTML programming language ke bajay markup language hai, kyunki iska primary kaam webpage ke content aur structure ko describe karna hai.",
+
+                example:
+                    "Ek building ko imagine karo. Building ki walls, rooms aur doors uska basic structure banate hain. Website mein HTML bhi kuch isi tarah basic structure provide karta hai.",
+
+                code:
+                    `<!DOCTYPE html>
+<html>
+<body>
+
+<h1>My First Website</h1>
+<p>This is my first webpage.</p>
+
+</body>
+</html>`,
+
+                practice:
+                    "Ek webpage banao jisme ek heading, do paragraphs aur ek link ho.",
+
+                learned:
+                    "HTML ka purpose aur basic HTML document structure."
+            },
+
+
+            {
+                title: "HTML Elements and Tags",
+
+                definition:
+                    "HTML mein webpage ke different parts ko represent karne ke liye tags aur elements ka use hota hai. Tag browser ko batata hai ki kisi content ka role kya hai. Jaise h1 heading ke liye, p paragraph ke liye aur a anchor link ke liye use hota hai. Opening aur closing tags milkar aksar ek HTML element banate hain. Kuch HTML elements aise bhi hote hain jinke separate closing tag ki zarurat nahi hoti.",
+
+                example:
+                    "Agar tum kisi book mein heading aur paragraph alag-alag rakhte ho, to HTML tags browser ko batate hain ki kaunsa text heading hai aur kaunsa normal paragraph.",
+
+                code:
+                    `<h1>My Heading</h1>
+
+<p>This is a paragraph.</p>
+
+<a href="https://example.com">
+Visit Website
+</a>`,
+
+                practice:
+                    "Teen different headings aur teen paragraphs banakar unhe HTML tags ka use karke display karo.",
+
+                learned:
+                    "HTML tags aur elements ka basic purpose."
+            },
+
+
+            {
+                title: "Links and Images",
+
+                definition:
+                    "HTML mein links ka use kisi doosre webpage, website ya webpage ke kisi specific location par user ko le jane ke liye hota hai. Images webpage ko visual information provide karti hain. Link banane ke liye generally anchor tag aur image show karne ke liye img element use kiya jata hai. Image ke saath alternative text dena accessibility aur image understanding ke liye useful hota hai.",
+
+                example:
+                    "Website par 'Visit Google' button par click karne se Google open hota hai. Ye link ka example hai. Kisi website par profile picture dikhana image element ka example hai.",
+
+                code:
+                    `<a href="https://www.google.com">
+Visit Google
 </a>
 
-<img
-    src="photo.jpg"
-    alt="My Photo"
->`
-                },
+<img src="photo.jpg"
+     alt="My Photo"
+     width="300">`,
 
-                {
-                    title: "HTML Lists & Tables",
-                    text:
-                        "Information ko organized form mein show karne ke liye lists aur tables useful hote hain.",
-                    points: [
-                        "Ordered list",
-                        "Unordered list",
-                        "Table",
-                        "Rows aur columns"
-                    ],
-                    code:
-                        `<ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScript</li>
-</ul>
+                practice:
+                    "Ek webpage mein ek image aur do external links add karo.",
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Age</th>
-    </tr>
-</table>`
-                },
+                learned:
+                    "HTML mein links aur images ka basic use."
+            },
 
-                {
-                    title: "CSS Basics",
-                    text:
-                        "CSS website ka design aur appearance control karta hai.",
-                    points: [
-                        "Colors",
-                        "Fonts",
-                        "Background",
-                        "Borders"
-                    ],
-                    code:
-                        `body {
-    background: #030712;
+
+            {
+                title: "HTML Forms",
+
+                definition:
+                    "HTML forms ka use user se information collect karne ke liye hota hai. Login form, registration form, contact form, search box aur feedback form common examples hain. Form ke andar input fields, labels, buttons aur doosre controls ho sakte hain. Form ka structure HTML provide karta hai, jabki actual data processing ke liye backend ya JavaScript ki zarurat ho sakti hai.",
+
+                example:
+                    "Jab kisi website par naam, email aur message bhar kar Contact Us form submit karte ho, to woh HTML form ka practical example hai.",
+
+                code:
+                    `<form>
+
+<label>Name:</label>
+<input type="text">
+
+<label>Email:</label>
+<input type="email">
+
+<button type="submit">
+Submit
+</button>
+
+</form>`,
+
+                practice:
+                    "Ek simple registration form banao jisme name, email, password aur submit button ho.",
+
+                learned:
+                    "HTML forms aur input fields ka basic purpose."
+            },
+
+
+            {
+                title: "CSS kya hai?",
+
+                definition:
+                    "CSS ka full form Cascading Style Sheets hai. CSS ka use webpage ke visual appearance aur layout ko control karne ke liye hota hai. HTML webpage ka structure banata hai, jabki CSS decide karta hai ki woh structure kaisa dikhega. CSS se colors, fonts, spacing, borders, backgrounds, sizes, animations aur responsive layouts design kiye ja sakte hain.",
+
+                example:
+                    "HTML se tum ek button bana sakte ho, lekin CSS se us button ka color, size, border, rounded corners aur hover effect design kar sakte ho.",
+
+                code:
+                    `h1 {
+    color: cyan;
+    font-size: 40px;
+}
+
+button {
+    background: black;
     color: white;
-}
+    padding: 12px;
+}`,
 
-h1 {
-    color: #00eaff;
-}`
-                },
+                practice:
+                    "Apne HTML heading ka color, size aur alignment CSS se change karo.",
 
-                {
-                    title: "CSS Flexbox",
-                    text:
-                        "Flexbox se website ke elements ko easily arrange kiya ja sakta hai.",
-                    points: [
-                        "display flex",
-                        "justify-content",
-                        "align-items",
-                        "gap"
-                    ],
-                    code:
-                        `.cards {
+                learned:
+                    "CSS ka purpose aur HTML ke saath uska relationship."
+            },
+
+
+            {
+                title: "CSS Layout and Flexbox",
+
+                definition:
+                    "CSS layout ka matlab webpage ke different elements ko screen par proper position aur arrangement mein rakhna hai. Flexbox CSS ka ek powerful layout system hai jo elements ko row ya column mein arrange karne, unke beech spacing maintain karne aur available space ko manage karne mein help karta hai. Modern responsive websites mein Flexbox ka bahut common use hota hai.",
+
+                example:
+                    "Navigation bar mein logo ko left aur menu items ko right side rakhna Flexbox se easily kiya ja sakta hai.",
+
+                code:
+                    `.container {
     display: flex;
-    gap: 20px;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}`
-                },
-
-                {
-                    title: "JavaScript Introduction",
-                    text:
-                        "JavaScript website mein interaction aur functionality add karta hai.",
-                    points: [
-                        "Variables",
-                        "Strings",
-                        "Numbers",
-                        "Console"
-                    ],
-                    code:
-                        `let name = "Rohit";
-
-console.log("Hello " + name);`
-                },
-
-                {
-                    title: "JavaScript Conditions",
-                    text:
-                        "Conditions program ko decision lene mein help karti hain.",
-                    points: [
-                        "if",
-                        "else",
-                        "Comparison",
-                        "Logical operators"
-                    ],
-                    code:
-                        `let age = 19;
-
-if (age >= 18) {
-    console.log("Adult");
-} else {
-    console.log("Minor");
-}`
-                },
-
-                {
-                    title: "JavaScript Functions",
-                    text:
-                        "Functions reusable code blocks hote hain.",
-                    points: [
-                        "function banana",
-                        "parameters",
-                        "return",
-                        "function call"
-                    ],
-                    code:
-                        `function add(a, b) {
-
-    return a + b;
-
 }
 
-console.log(add(5, 3));`
-                },
+.box {
+    padding: 20px;
+}`,
 
-                {
-                    title: "DOM & Events",
-                    text:
-                        "DOM ke through JavaScript webpage ke elements ko change kar sakta hai.",
-                    points: [
-                        "querySelector",
-                        "textContent",
-                        "Click event",
-                        "Style change"
-                    ],
-                    code:
-                        `const button =
-document.querySelector("button");
+                practice:
+                    "Teen boxes banao aur Flexbox ka use karke unhe ek row mein arrange karo.",
 
-button.addEventListener("click", function() {
+                learned:
+                    "Flexbox ke through webpage elements ko arrange karna."
+            },
 
-    document.body.style.background = "#071021";
 
-});`
-                },
+            {
+                title: "Responsive Web Design",
 
-                {
-                    title: "First Website Project",
-                    text:
-                        "Ab HTML, CSS aur JavaScript ko combine karke ek simple website banao.",
-                    points: [
-                        "Page structure",
-                        "Design",
-                        "Buttons",
-                        "JavaScript interaction"
-                    ],
-                    code:
-                        `<!DOCTYPE html>
+                definition:
+                    "Responsive Web Design ka matlab website ko different screen sizes par properly display karna hai. Aaj users websites ko mobile phone, tablet, laptop aur desktop sabhi devices par open karte hain. Responsive design mein layout, images, text aur other elements available screen ke according adjust hote hain. Isse user ko zoom karke ya horizontally scroll karke website use karne ki zarurat kam padti hai.",
+
+                example:
+                    "Desktop par teen cards ek row mein dikh sakte hain, jabki mobile par wahi cards ek-ek karke vertical layout mein aa sakte hain.",
+
+                code:
+                    `@media (max-width: 700px) {
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 32px;
+    }
+
+}`,
+
+                practice:
+                    "Apne webpage ko mobile width ke liye responsive banao aur check karo ki layout properly adjust ho raha hai ya nahi.",
+
+                learned:
+                    "Responsive design ki importance aur media queries ka basic use."
+            },
+
+
+            {
+                title: "JavaScript Basics",
+
+                definition:
+                    "JavaScript ek programming language hai jo webpages mein logic, interaction aur dynamic behaviour add karne ke liye widely use hoti hai. HTML structure deta hai aur CSS appearance control karta hai, jabki JavaScript user ke actions ke according webpage ko change kar sakta hai. Button click, menu open karna, calculations, form validation aur dynamic content JavaScript ke common examples hain.",
+
+                example:
+                    "Jab tum kisi website par button click karte ho aur text change ho jata hai, popup open hota hai ya menu appear hota hai, to JavaScript use ho sakta hai.",
+
+                code:
+                    `function showMessage() {
+    alert("Hello Rohit!");
+}`,
+
+                practice:
+                    "Ek button banao jo click karne par ek message display kare.",
+
+                learned:
+                    "JavaScript ka purpose aur basic function concept."
+            },
+
+
+            {
+                title: "Build Your First Complete Website",
+
+                definition:
+                    "Ek complete website banane ke liye sirf ek technology ko samajhna enough nahi hota. HTML se content aur structure, CSS se design aur layout, aur JavaScript se interaction create kiya ja sakta hai. In technologies ko combine karke ek functional webpage banaya ja sakta hai. Website complete karne ke baad testing, mobile responsiveness, accessibility, performance aur deployment jaise aspects ko bhi check karna important hota hai.",
+
+                example:
+                    "Portfolio website mein HTML se About, Skills aur Contact sections banenge, CSS se professional design banega aur JavaScript se interactive features add kiye ja sakte hain.",
+
+                code:
+                    `<!DOCTYPE html>
 <html>
-
 <head>
 
 <style>
-
 body {
-    background: #030712;
-    color: white;
+    font-family: Arial;
     text-align: center;
 }
 
 button {
     padding: 12px 20px;
 }
-
 </style>
 
 </head>
 
 <body>
 
-<h1>My Website</h1>
+<h1>My Portfolio</h1>
 
-<button onclick="alert('Hello Rohit!')">
-    Click Me
+<p>Welcome to my website.</p>
+
+<button onclick="alert('Hello!')">
+Click Me
 </button>
 
 </body>
+</html>`,
 
-</html>`
-                }
+                practice:
+                    "Apna ek mini portfolio page banao jisme Name, About Me, Skills aur Contact section ho.",
 
-            ]
-        },
+                learned:
+                    "HTML, CSS aur JavaScript ko combine karke basic website banana."
+            }
+
+        ],
 
 
-        {
-            id: "python",
-            icon: "🐍",
-            title: "Python Programming",
-            description:
-                "Python programming bilkul beginner level se start karo.",
-            tags: ["Python", "Coding", "Beginner"],
-            lessons: [
+        /* ==========================================
+           PYTHON
+           ========================================== */
 
-                {
-                    title: "Python Introduction",
-                    text:
-                        "Python ek popular programming language hai jo beginners ke liye bhi easy syntax provide karti hai.",
-                    points: [
-                        "Python kya hai",
-                        "Python ka use",
-                        "print function",
-                        "Python file"
-                    ],
-                    code:
-                        `print("Hello Rohit")
+        python: [
 
-print("Welcome to Python")`
-                },
+            {
+                title: "What is Python?",
 
-                {
-                    title: "Variables",
-                    text:
-                        "Variables information ko store karne ke liye use hote hain.",
-                    points: [
-                        "Variable banana",
-                        "String",
-                        "Integer",
-                        "Boolean"
-                    ],
-                    code:
-                        `name = "Rohit"
+                definition:
+                    "Python ek high-level, general-purpose programming language hai jiska use computer ko instructions dene ke liye kiya jata hai. Python ka syntax relatively simple aur readable hai, isliye beginners ke liye programming start karne ki popular languages mein se ek hai. Python ka use automation, web development, data analysis, artificial intelligence, machine learning, scripting aur software development jaise bahut se areas mein hota hai.",
+
+                example:
+                    "Jaise hum kisi person ko step-by-step instructions dete hain, waise hi Python code ke through computer ko instructions di ja sakti hain.",
+
+                code:
+                    `print("Hello Rohit")
+
+print("I am learning Python")`,
+
+                practice:
+                    "Python ka program likho jo tumhara naam, city aur favourite subject print kare.",
+
+                learned:
+                    "Python kya hai, iska use kahan hota hai aur basic Python program kaise likhte hain."
+            },
+
+
+            {
+                title: "Variables and Data Types",
+
+                definition:
+                    "Variable programming mein ek naam diya hua storage location hota hai jisme program ke dauran kisi value ya information ko store kiya ja sakta hai. Python mein variable banane ke liye generally alag se data type declare karna zaroori nahi hota. Python stored value ko dekhkar uska type determine kar sakta hai. Common data types mein string, integer, float aur boolean shamil hain.",
+
+                example:
+                    "Ek box imagine karo jiske bahar name likha hai aur andar Rohit naam rakha hai. Programming mein variable kuch isi tarah value ko identify aur store karne mein help karta hai.",
+
+                code:
+                    `name = "Rohit"
 age = 19
+height = 5.3
 student = True
 
 print(name)
-print(age)`
-                },
+print(age)
+print(height)
+print(student)`,
 
-                {
-                    title: "Operators",
-                    text:
-                        "Operators calculation aur comparison ke liye use hote hain.",
-                    points: [
-                        "Addition",
-                        "Subtraction",
-                        "Multiplication",
-                        "Division"
-                    ],
-                    code:
-                        `a = 10
+                practice:
+                    "Apne naam, age, city aur student status ke liye variables banao aur unhe print karo.",
+
+                learned:
+                    "Variables kya hote hain aur basic Python data types kaise use hote hain."
+            },
+
+
+            {
+                title: "Python Operators",
+
+                definition:
+                    "Operators special symbols ya keywords hote hain jo values ke beech calculation, comparison ya logical operation perform karne ke liye use hote hain. Arithmetic operators addition, subtraction, multiplication aur division jaise mathematical operations ke liye use hote hain. Comparison operators values ko compare karte hain, jabki logical operators multiple conditions ko combine karne mein help karte hain.",
+
+                example:
+                    "Calculator mein 10 + 5 karna arithmetic operation hai. Python mein bhi operators ka use isi tarah calculations aur comparisons ke liye hota hai.",
+
+                code:
+                    `a = 10
 b = 5
 
 print(a + b)
 print(a - b)
 print(a * b)
-print(a / b)`
-                },
+print(a / b)
 
-                {
-                    title: "if else",
-                    text:
-                        "if else conditions ke basis par decision lene ke liye use hota hai.",
-                    points: [
-                        "if",
-                        "else",
-                        "Comparison",
-                        "Indentation"
-                    ],
-                    code:
-                        `marks = 74
+print(a > b)
+print(a == b)`,
 
-if marks >= 60:
+                practice:
+                    "Do numbers store karo aur unke addition, subtraction, multiplication, division aur comparison ka result print karo.",
 
-    print("Good")
+                learned:
+                    "Python ke basic arithmetic aur comparison operators."
+            },
 
+
+            {
+                title: "Conditions and if-else",
+
+                definition:
+                    "Conditional statements program ko situation ke according different decisions lene ki ability dete hain. Python mein if statement tab code execute karti hai jab given condition true ho. Agar condition false ho to else block execute ho sakta hai. Multiple possibilities handle karne ke liye elif ka use kiya ja sakta hai.",
+
+                example:
+                    "Agar exam marks 40 ya usse zyada hain to Pass, warna Fail. Ye decision condition ke through program mein represent kiya ja sakta hai.",
+
+                code:
+                    `marks = 65
+
+if marks >= 40:
+    print("Pass")
 else:
+    print("Fail")`,
 
-    print("Keep Practicing")`
-                },
+                practice:
+                    "Ek program banao jo age check karke bataye ki person 18 ya usse zyada hai ya nahi.",
 
-                {
-                    title: "For Loop",
-                    text:
-                        "Loop kisi kaam ko multiple times repeat karne ke liye use hota hai.",
-                    points: [
-                        "for loop",
-                        "range",
-                        "Repeated execution"
-                    ],
-                    code:
-                        `for i in range(1, 11):
-
-    print(i)`
-                },
-
-                {
-                    title: "While Loop",
-                    text:
-                        "while loop condition true hone tak code execute karta hai.",
-                    points: [
-                        "while",
-                        "Condition",
-                        "Counter"
-                    ],
-                    code:
-                        `number = 1
-
-while number <= 5:
-
-    print(number)
-
-    number += 1`
-                },
-
-                {
-                    title: "Lists",
-                    text:
-                        "List ek hi variable mein multiple values store kar sakti hai.",
-                    points: [
-                        "List creation",
-                        "Index",
-                        "append",
-                        "remove"
-                    ],
-                    code:
-                        `names = [
-    "Rohit",
-    "Aman",
-    "Rahul"
-]
-
-print(names[0])
-
-names.append("Neha")`
-                },
-
-                {
-                    title: "Functions",
-                    text:
-                        "Functions reusable code banane ka powerful method hain.",
-                    points: [
-                        "def",
-                        "Parameters",
-                        "Return",
-                        "Function call"
-                    ],
-                    code:
-                        `def add(a, b):
-
-    return a + b
+                learned:
+                    "Conditions ke through Python program mein decisions kaise liye jate hain."
+            },
 
 
-result = add(10, 5)
+            {
+                title: "Loops",
 
-print(result)`
-                },
+                definition:
+                    "Loop programming ka ek mechanism hai jiske through kisi instruction ya code block ko repeatedly execute kiya ja sakta hai. Jab same kaam baar-baar karna ho, to har line manually likhne ke bajay loop use karna efficient hota hai. Python mein for aur while loops commonly use kiye jate hain.",
 
-                {
-                    title: "Dictionary",
-                    text:
-                        "Dictionary data ko key aur value ke form mein store karta hai.",
-                    points: [
-                        "Key",
-                        "Value",
-                        "Access data"
-                    ],
-                    code:
-                        `user = {
+                example:
+                    "Agar tumhe 1 se 100 tak numbers print karne hain, to 100 print statements likhne ke bajay loop ka use kiya ja sakta hai.",
 
+                code:
+                    `for number in range(1, 6):
+    print(number)`,
+
+                practice:
+                    "Loop ka use karke 1 se 10 tak numbers print karo.",
+
+                learned:
+                    "Repeated tasks ko loops ke through automate karna."
+            },
+
+
+            {
+                title: "Lists, Tuples and Sets",
+
+                definition:
+                    "Python mein multiple values ko organize aur store karne ke liye collection data structures available hain. List ordered collection hoti hai aur uski values change ki ja sakti hain. Tuple bhi ordered collection hai lekin generally immutable hoti hai. Set unique values ka collection hota hai aur duplicate values ko automatically eliminate kar sakta hai.",
+
+                example:
+                    "Student ke subjects ko ek list mein store kiya ja sakta hai. Fixed information ke liye tuple aur unique items manage karne ke liye set useful ho sakta hai.",
+
+                code:
+                    `subjects = ["Math", "English", "Computer"]
+
+print(subjects)
+
+numbers = {1, 2, 3, 3}
+
+print(numbers)`,
+
+                practice:
+                    "Apne 5 favourite subjects ki list banao aur usmein se ek item access karo.",
+
+                learned:
+                    "Python ke basic collection types ka purpose."
+            },
+
+
+            {
+                title: "Dictionaries and Strings",
+
+                definition:
+                    "Dictionary Python ka ek data structure hai jo information ko key-value pairs mein store karta hai. Isse related information ko meaningful keys ke through organize karna easy hota hai. String text data ko represent karti hai aur Python mein strings ke saath searching, joining, slicing aur formatting jaise operations kiye ja sakte hain.",
+
+                example:
+                    "Student ki information mein name, age aur course ko keys ke through store karna dictionary ka practical example hai.",
+
+                code:
+                    `student = {
     "name": "Rohit",
-    "age": 19
-
+    "age": 19,
+    "course": "Economics"
 }
 
-print(user["name"])`
-                },
+print(student["name"])
+print(student["course"])`,
 
-                {
-                    title: "Python Mini Project",
-                    text:
-                        "Ab basic concepts ko combine karke simple guessing game banao.",
-                    points: [
-                        "Random",
-                        "Input",
-                        "Condition",
-                        "Game logic"
-                    ],
-                    code:
-                        `import random
+                practice:
+                    "Apne baare mein name, age, city aur course ke saath ek dictionary banao.",
 
-number =
-random.randint(1, 10)
+                learned:
+                    "Dictionary aur string ka basic use."
+            },
 
-guess =
-int(input("Guess 1-10: "))
 
-if guess == number:
+            {
+                title: "Functions",
 
-    print("Correct!")
+                definition:
+                    "Function code ka ek reusable block hota hai jo kisi specific task ko perform karne ke liye banaya jata hai. Functions ka use code ko organized, reusable aur easier to maintain banane mein help karta hai. Python mein function def keyword ke through define kiya jata hai aur parameters ke through input values receive kar sakta hai.",
 
+                example:
+                    "Agar tumhe same calculation program mein kai baar karni hai, to calculation ka code ek function mein rakhkar baar-baar call kiya ja sakta hai.",
+
+                code:
+                    `def greet(name):
+    print("Hello", name)
+
+greet("Rohit")
+greet("Aman")`,
+
+                practice:
+                    "Ek function banao jo kisi person ka naam receive karke greeting print kare.",
+
+                learned:
+                    "Functions ka purpose, parameters aur function call."
+            },
+
+
+            {
+                title: "Errors, Files and Modules",
+
+                definition:
+                    "Programming mein errors tab occur ho sakte hain jab code mein syntax problem ho, invalid operation kiya jaye ya program ko expected data na mile. Python mein errors ko samajhna aur handle karna important hai. Files ke through program external data read ya write kar sakta hai, aur modules ke through reusable code ko different programs mein use kiya ja sakta hai.",
+
+                example:
+                    "Agar program kisi aisi file ko open karne ki koshish kare jo exist nahi karti, to error aa sakta hai. Is situation ko properly handle karna program ko reliable banata hai.",
+
+                code:
+                    `try:
+    number = int(input("Enter a number: "))
+    print(10 / number)
+
+except ValueError:
+    print("Please enter a valid number.")
+
+except ZeroDivisionError:
+    print("Cannot divide by zero.")`,
+
+                practice:
+                    "Ek program banao jo user se number le aur invalid input hone par friendly error message show kare.",
+
+                learned:
+                    "Basic error handling aur reliable Python programs ka concept."
+            },
+
+
+            {
+                title: "Python Mini Project",
+
+                definition:
+                    "Mini project ek aisa practical task hota hai jisme multiple programming concepts ko combine karke ek small working program banaya jata hai. Projects se student ko sirf syntax ya definitions yaad karne ke bajay programming logic ko practically apply karne ka experience milta hai.",
+
+                example:
+                    "Ek simple student result program mein variables, conditions, calculations aur functions ko combine kiya ja sakta hai.",
+
+                code:
+                    `name = input("Enter your name: ")
+marks = float(input("Enter marks: "))
+
+if marks >= 40:
+    result = "Pass"
 else:
+    result = "Fail"
 
-    print("Try Again!")`
-                }
+print("Student:", name)
+print("Result:", result)`,
 
-            ]
-        },
+                practice:
+                    "Is project ko improve karke multiple subjects ke marks lekar percentage calculate karo.",
+
+                learned:
+                    "Basic Python concepts ko combine karke practical program banana."
+            }
+
+        ],
 
 
-        {
-            id: "kali",
-            icon: "🐧",
-            title: "Kali Linux",
-            description:
-                "Linux aur ethical cybersecurity fundamentals safe lab environment mein seekho.",
-            tags: ["Linux", "Kali", "Security"],
-            lessons: [
+        /* ==========================================
+           KALI LINUX
+           ========================================== */
 
-                {
-                    title: "Kali Linux Introduction",
-                    text:
-                        "Kali Linux security testing aur cybersecurity learning ke liye widely used Linux distribution hai.",
-                    points: [
-                        "Linux basics",
-                        "Kali ka purpose",
-                        "Ethical use",
-                        "Practice lab"
-                    ],
-                    code:
-                        `whoami
+        kali: [
 
+            {
+                title: "What is Kali Linux?",
+
+                definition:
+                    "Kali Linux ek Linux distribution hai jo primarily security professionals, penetration testers, digital forensics practitioners aur cybersecurity learners ke authorized security work ke liye specialized tools provide karta hai. Kali Linux ko samajhne ke liye pehle Linux ke basic concepts, command line aur file system ko samajhna useful hota hai. Iska use sirf authorized systems, personal labs aur legal testing environments mein karna chahiye.",
+
+                example:
+                    "Ek cybersecurity student VirtualBox mein apna isolated lab create karke Kali Linux use kar sakta hai aur intentionally vulnerable practice machines par security concepts learn kar sakta hai.",
+
+                code:
+                    `whoami
 pwd
+ls`,
 
-uname -a`
-                },
+                practice:
+                    "Apne authorized Kali/Linux lab mein upar ke commands run karo aur dekho ki har command kya information provide karti hai.",
 
-                {
-                    title: "Terminal Basics",
-                    text:
-                        "Terminal Linux system ko commands ke through control karne ka powerful interface hai.",
-                    points: [
-                        "pwd",
-                        "ls",
-                        "cd",
-                        "clear"
-                    ],
-                    code:
-                        `pwd
+                learned:
+                    "Kali Linux kya hai aur iska legitimate cybersecurity learning mein kya role hai."
+            },
 
+
+            {
+                title: "Linux File System",
+
+                definition:
+                    "Linux file system ek organized structure hai jisme files aur directories ko system ke andar arrange kiya jata hai. Windows ke drive-letter model se Linux ka structure different hota hai. Linux mein root directory `/` se hierarchy start hoti hai aur uske andar different directories system files, user data, programs aur configuration information ko organize kar sakti hain.",
+
+                example:
+                    "Jaise computer mein folders ke andar subfolders aur files organized hoti hain, Linux bhi hierarchical directory structure use karta hai.",
+
+                code:
+                    `pwd
 ls
+ls -la`,
 
-cd Documents
+                practice:
+                    "Apne lab mein current directory identify karo aur available files/directories ki list dekho.",
 
-clear`
-                },
+                learned:
+                    "Linux directory structure aur basic navigation ka concept."
+            },
 
-                {
-                    title: "Files & Folders",
-                    text:
-                        "Linux mein files aur folders ko terminal se manage karna seekho.",
-                    points: [
-                        "mkdir",
-                        "touch",
-                        "cp",
-                        "mv"
-                    ],
-                    code:
-                        `mkdir practice
 
+            {
+                title: "Terminal Basics",
+
+                definition:
+                    "Linux terminal ek command-line interface hai jiske through user text commands ke madhyam se operating system ke saath interact kar sakta hai. Graphical interface mein mouse se kaam karne ke bajay terminal mein commands type karke files manage, programs run aur system information check ki ja sakti hai. Terminal ko effectively use karne ke liye commands ko samajhna aur unka purpose jaan-na important hai.",
+
+                example:
+                    "File manager kholkar folder dekhne ke bajay terminal mein pwd aur ls jaise commands se current location aur contents check kiye ja sakte hain.",
+
+                code:
+                    `pwd
+ls
+clear
+whoami`,
+
+                practice:
+                    "Har command run karke observe karo ki terminal mein kya output milta hai.",
+
+                learned:
+                    "Terminal kya hai aur basic commands ka purpose."
+            },
+
+
+            {
+                title: "Files and Directories",
+
+                definition:
+                    "Linux mein files information store karti hain aur directories files ko organize karne ke liye containers ki tarah kaam karti hain. Command line se directories create, enter, list aur files manage ki ja sakti hain. File management Linux administration aur cybersecurity lab work ka fundamental skill hai.",
+
+                example:
+                    "Project ke liye ek directory banakar uske andar notes aur practice files rakhna normal file management ka example hai.",
+
+                code:
+                    `mkdir practice
+cd practice
 touch notes.txt
+ls`,
 
-ls`
-                },
+                practice:
+                    "Apne home directory mein practice folder banao aur uske andar ek text file create karo.",
 
-                {
-                    title: "Linux Permissions",
-                    text:
-                        "Linux permissions decide karti hain ki kaun file ko read, write ya execute kar sakta hai.",
-                    points: [
-                        "Read",
-                        "Write",
-                        "Execute",
-                        "chmod"
-                    ],
-                    code:
-                        `ls -l
-
-chmod u+x script.sh`
-                },
-
-                {
-                    title: "Users & Processes",
-                    text:
-                        "Running processes aur current user ko inspect karna basic Linux administration ka part hai.",
-                    points: [
-                        "whoami",
-                        "id",
-                        "ps",
-                        "top"
-                    ],
-                    code:
-                        `whoami
-
-id
-
-ps`
-                },
-
-                {
-                    title: "Networking Basics",
-                    text:
-                        "IP address, network interface aur connectivity ke basic concepts samjho.",
-                    points: [
-                        "IP address",
-                        "Network interface",
-                        "Ping",
-                        "Localhost"
-                    ],
-                    code:
-                        `ip addr
-
-ping 127.0.0.1`
-                },
-
-                {
-                    title: "Security Tools Overview",
-                    text:
-                        "Security tools ko use karne se pehle unka purpose aur authorized testing ka concept samajhna important hai.",
-                    points: [
-                        "Scanning concept",
-                        "Network analysis",
-                        "Web testing",
-                        "Authorization"
-                    ],
-                    code:
-                        `nmap --help`
-                },
-
-                {
-                    title: "Web Security Basics",
-                    text:
-                        "Web security mein HTTP, authentication aur input validation jaise concepts important hote hain.",
-                    points: [
-                        "HTTP",
-                        "HTTPS",
-                        "Cookies",
-                        "Authentication"
-                    ],
-                    code:
-                        `curl -I https://example.com`
-                },
-
-                {
-                    title: "Safe Cyber Lab",
-                    text:
-                        "Cybersecurity practice hamesha apne system, local VM ya authorized training lab par karni chahiye.",
-                    points: [
-                        "Virtual machine",
-                        "Snapshots",
-                        "Isolated network",
-                        "Permission"
-                    ],
-                    code:
-                        `echo "Practice only in an authorized lab."`
-                },
-
-                {
-                    title: "Ethical Security Workflow",
-                    text:
-                        "Responsible security testing ka basic workflow permission, scope, testing aur documentation par based hota hai.",
-                    points: [
-                        "Get permission",
-                        "Define scope",
-                        "Test safely",
-                        "Document results"
-                    ],
-                    code:
-                        `Permission
-    ↓
-Scope
-    ↓
-Test
-    ↓
-Document`
-                }
-
-            ]
-        },
+                learned:
+                    "Basic Linux files aur directories manage karna."
+            },
 
 
-        {
-            id: "cyber",
-            icon: "🛡️",
-            title: "Cybersecurity Basics",
-            description:
-                "Cybersecurity ko beginner level se practical safety habits ke saath samjho.",
-            tags: ["Security", "Privacy", "Safety"],
-            lessons: [
+            {
+                title: "Users and Permissions",
 
-                {
-                    title: "Cybersecurity kya hai?",
-                    text:
-                        "Cybersecurity systems, accounts aur information ko unauthorized access aur misuse se protect karne ka process hai.",
-                    points: [
-                        "Confidentiality",
-                        "Integrity",
-                        "Availability",
-                        "Threat awareness"
-                    ],
-                    code:
-                        `Security =
-People
-+
-Process
-+
-Technology`
-                },
+                definition:
+                    "Linux multi-user operating system hai, isliye files aur resources ko different users ke liye control karna important hota hai. File permissions determine karti hain ki owner, group aur other users kisi file ko read, write ya execute kar sakte hain ya nahi. Permissions ko samajhna system security aur safe administration ka important part hai.",
 
-                {
-                    title: "Common Cyber Threats",
-                    text:
-                        "Different cyber threats ka goal data, accounts ya systems ko compromise karna ho sakta hai.",
-                    points: [
-                        "Phishing",
-                        "Malware",
-                        "Credential theft",
-                        "Scams"
-                    ],
-                    code:
-                        `Think
+                example:
+                    "Ek private configuration file ko sirf authorized user ke liye readable rakhna permissions ka practical use hai.",
 
+                code:
+                    `ls -l
+whoami`,
+
+                practice:
+                    "Apni lab ki ek test file ki permissions ko `ls -l` se observe karo aur owner/group information identify karo.",
+
+                learned:
+                    "Linux users aur file permission system ka basic concept."
+            },
+
+
+            {
+                title: "Processes and Services",
+
+                definition:
+                    "Process ek running program ya task ka instance hota hai. Linux system mein ek waqt par bahut saare processes background mein run kar sakte hain. Services aise background programs hote hain jo specific system functionality provide kar sakte hain. Processes aur services ko monitor karna troubleshooting aur system administration mein useful hota hai.",
+
+                example:
+                    "Background mein chal raha web server ek service ho sakta hai aur us service ko run karne wala active program process ke roop mein appear kar sakta hai.",
+
+                code:
+                    `ps
+ps aux
+top`,
+
+                practice:
+                    "Apne lab system par running processes ko observe karo aur CPU/memory usage ko samjho.",
+
+                learned:
+                    "Linux processes aur services ka basic role."
+            },
+
+
+            {
+                title: "Networking Fundamentals",
+
+                definition:
+                    "Computer networking ka matlab multiple devices ke beech data communication ka system hai. Linux mein networking concepts ko samajhne ke liye IP address, interface, gateway aur DNS jaise fundamentals important hain. Cybersecurity learning mein networking ki basic understanding bahut useful hoti hai kyunki devices aur services network ke through communicate karte hain.",
+
+                example:
+                    "Jab tumhara laptop Wi-Fi ke through router se connect hota hai aur internet access karta hai, tab networking concepts ka practical use hota hai.",
+
+                code:
+                    `ip addr
+ip route`,
+
+                practice:
+                    "Apne authorized lab system par network interface aur routing information ko observe karo.",
+
+                learned:
+                    "Basic IP addressing aur Linux networking information."
+            },
+
+
+            {
+                title: "Package Management",
+
+                definition:
+                    "Linux packages software applications aur unki required files ko organized form mein distribute karte hain. Package manager software ko install, update aur remove karne ka systematic method provide karta hai. Kali Linux Debian-based system hone ke karan APT package management ecosystem use karta hai.",
+
+                example:
+                    "Jaise mobile mein app store se application install aur update karte ho, Linux package manager software packages ko manage karne ka command-line based method provide karta hai.",
+
+                code:
+                    `sudo apt update
+apt search <package-name>`,
+
+                practice:
+                    "Apne Kali lab mein package information search karo aur package manager ke output ko samjho.",
+
+                learned:
+                    "Package manager ka purpose aur safe software management."
+            },
+
+
+            {
+                title: "Security Tools in a Safe Lab",
+
+                definition:
+                    "Cybersecurity tools software utilities hote hain jo security assessment, monitoring, analysis ya defensive testing mein help kar sakte hain. Kali Linux mein bahut saare security tools available hote hain, lekin tool ka naam ya command yaad karna enough nahi hai. Har tool ko sirf authorized systems, personal machines ya intentionally created lab environments par use karna chahiye.",
+
+                example:
+                    "Apne VirtualBox lab mein intentionally vulnerable practice machine ke against learning exercise karna authorized security testing ka example hai.",
+
+                code:
+                    `# First understand the tool's documentation
+man <command>
+
+# Example:
+man ping`,
+
+                practice:
+                    "Apne lab mein kisi installed command ki manual page open karo aur uske purpose aur options ko read karo.",
+
+                learned:
+                    "Security tools ko responsible aur authorized environment mein use karne ka importance."
+            },
+
+
+            {
+                title: "Ethical Security Workflow",
+
+                definition:
+                    "Ethical security testing ek structured process hai jisme authorized target ko identify karke scope samjha jata hai, information collect ki jati hai, potential weaknesses analyze ki jati hain, findings document ki jati hain aur responsible remediation suggest ki jati hai. Professional security work mein permission, defined scope, documentation aur safety sabse important principles hain.",
+
+                example:
+                    "Company apne written authorization ke saath security team ko internal test environment assess karne deti hai. Team scope ke according testing karti hai aur end mein findings aur fixes ki report deti hai.",
+
+                code:
+                    `1. Get authorization
+2. Define scope
+3. Build lab/test plan
+4. Test safely
+5. Document findings
+6. Recommend fixes
+7. Verify remediation`,
+
+                practice:
+                    "Apne personal VirtualBox lab ke liye ek small security-testing plan likho jisme scope aur allowed systems clearly mention hon.",
+
+                learned:
+                    "Ethical cybersecurity testing ka responsible workflow."
+            }
+
+        ],
+
+
+        /* ==========================================
+           CYBERSECURITY
+           ========================================== */
+
+        cyber: [
+
+            {
+                title: "What is Cybersecurity?",
+
+                definition:
+                    "Cybersecurity ka matlab computers, phones, networks, applications, accounts aur digital information ko unauthorized access, misuse, damage, fraud aur other cyber threats se protect karne ke practices aur technologies se hai. Cybersecurity sirf hacking tools ke baare mein nahi hai. Strong passwords, software updates, backups, access control, secure configuration aur user awareness bhi cybersecurity ke important parts hain.",
+
+                example:
+                    "Apne email account par strong unique password aur multi-factor authentication enable karna cybersecurity ka simple practical example hai.",
+
+                code:
+                    `Security basics:
+
+Strong password
++ MFA
++ Updates
++ Backup
++ Safe browsing
+= Better protection`,
+
+                practice:
+                    "Apne important accounts ki security settings check karo aur dekho ki MFA available hai ya nahi.",
+
+                learned:
+                    "Cybersecurity ka broad meaning aur everyday security practices."
+            },
+
+
+            {
+                title: "Threats and Attack Surface",
+
+                definition:
+                    "Cyber threat koi aisa potential event ya activity hai jo digital system, data ya user ko harm kar sakta hai. Attack surface un possible entry points ka collection hota hai jahan se unauthorized access attempt kiya ja sakta hai, jaise exposed services, weak passwords, outdated software ya compromised accounts. Attack surface ko reduce karna security improvement ka important goal hai.",
+
+                example:
+                    "Agar computer mein outdated software aur unnecessary network service enabled hai, to security risk badh sakta hai.",
+
+                code:
+                    `Security review:
+
+1. Identify devices
+2. Identify accounts
+3. Update software
+4. Remove unused services
+5. Review permissions`,
+
+                practice:
+                    "Apne personal computer par unused applications aur accounts identify karo aur jo unnecessary hain unhe review karo.",
+
+                learned:
+                    "Threat aur attack surface ka basic concept."
+            },
+
+
+            {
+                title: "Password Security",
+
+                definition:
+                    "Password security ka matlab accounts ko strong, unique aur difficult-to-guess credentials se protect karna hai. Ek password ko multiple websites par reuse karne se risk badhta hai, kyunki ek service compromise hone par attacker same credentials ko doosri services par try kar sakta hai. Password manager unique passwords create aur manage karne mein useful ho sakta hai.",
+
+                example:
+                    "Har important account ke liye alag strong password use karna password security ka basic principle hai.",
+
+                code:
+                    `Good practice:
+
+Account A → unique password
+Account B → different password
+Account C → different password
+
+Add MFA wherever available.`,
+
+                practice:
+                    "Apne important accounts ki list banao aur identify karo ki kahin password reuse to nahi ho raha.",
+
+                learned:
+                    "Unique passwords aur password reuse ke risk."
+            },
+
+
+            {
+                title: "Multi-Factor Authentication",
+
+                definition:
+                    "Multi-Factor Authentication ya MFA account login ko ek additional verification step se protect karta hai. Password ke alawa user ko doosra authentication factor provide karna pad sakta hai. Isse password accidentally leak hone ki situation mein bhi account ko additional protection mil sakti hai.",
+
+                example:
+                    "Password enter karne ke baad authenticator app ka verification code enter karna MFA ka example hai.",
+
+                code:
+                    `Login:
+
+1. Password
+2. Second verification factor
+3. Account access`,
+
+                practice:
+                    "Apne email ya social media account mein MFA option available hai ya nahi check karo.",
+
+                learned:
+                    "MFA kya hai aur account security mein iska role."
+            },
+
+
+            {
+                title: "Phishing",
+
+                definition:
+                    "Phishing ek social engineering technique hai jisme attacker fake email, message, website ya other communication ke through user ko sensitive information reveal karne, malicious action karne ya fraudulent website visit karne ke liye trick karne ki koshish karta hai. Phishing messages aksar urgency, fear, reward ya account problem jaise psychological triggers use karte hain.",
+
+                example:
+                    "Fake message: 'Your account will be closed today. Click here immediately.' Aise urgent messages ko verify kiye bina link open nahi karna chahiye.",
+
+                code:
+                    `Before clicking:
+
+Check sender
+Check domain
+Check message context
+Don't share OTP
+Don't rush`,
+
+                practice:
+                    "Kisi suspicious message mein sender, link domain aur urgency language ko identify karne ki practice karo.",
+
+                learned:
+                    "Phishing ko recognize karne ke basic signs."
+            },
+
+
+            {
+                title: "Malware",
+
+                definition:
+                    "Malware malicious software ka general term hai. Is category mein viruses, trojans, ransomware, spyware aur other harmful software aa sakte hain. Malware system ya data ko damage, steal, encrypt ya misuse karne ki koshish kar sakta hai. Safe downloads, software updates, security tools aur cautious browsing malware risk reduce karne mein help karte hain.",
+
+                example:
+                    "Unknown website se cracked software download karke install karna malware risk increase kar sakta hai.",
+
+                code:
+                    `Safe habit:
+
+Download from trusted sources
+Keep software updated
+Scan suspicious files
+Avoid unknown executables`,
+
+                practice:
+                    "Apne computer mein installed applications ko review karo aur unknown/unnecessary software identify karo.",
+
+                learned:
+                    "Malware kya hai aur basic prevention practices."
+            },
+
+
+            {
+                title: "Network Security",
+
+                definition:
+                    "Network security ka purpose network aur uske connected systems ko unauthorized access, misuse aur attacks se protect karna hai. Secure Wi-Fi configuration, strong router credentials, software updates, firewall aur appropriate access controls network security ke common components hain.",
+
+                example:
+                    "Home Wi-Fi ka default administrator password change karna aur strong wireless security use karna network security ka practical example hai.",
+
+                code:
+                    `Basic checklist:
+
+Strong router password
+Secure Wi-Fi
+Updated firmware
+Firewall enabled
+Unknown devices reviewed`,
+
+                practice:
+                    "Apne home router ki security settings ko review karo aur default credentials use ho rahe hain ya nahi check karo.",
+
+                learned:
+                    "Basic network security practices."
+            },
+
+
+            {
+                title: "Encryption",
+
+                definition:
+                    "Encryption ek process hai jisme readable information ko mathematical process ke through aise protected form mein transform kiya jata hai jise unauthorized person easily understand nahi kar sakta. Correct key ya authorized mechanism ke through information ko usable form mein recover kiya ja sakta hai. Encryption data protection ka important part hai, especially sensitive information ke liye.",
+
+                example:
+                    "Secure websites HTTPS use karti hain, jisse browser aur website ke beech communication ko protect karne mein encryption ka role hota hai.",
+
+                code:
+                    `Plain data
+     ↓
+Encryption
+     ↓
+Protected data
+     ↓
+Authorized decryption
+     ↓
+Original data`,
+
+                practice:
+                    "HTTPS kya indicate karta hai aur browser mein secure connection ka symbol kahan hota hai, identify karo.",
+
+                learned:
+                    "Encryption ka basic purpose aur data protection mein iska role."
+            },
+
+
+            {
+                title: "Social Engineering",
+
+                definition:
+                    "Social engineering mein attacker technical weakness ke bajay human behaviour ko manipulate karne ki koshish karta hai. Attacker trust, fear, urgency, authority ya curiosity ka use karke user se information ya action obtain karne ki koshish kar sakta hai. Awareness aur verification social engineering se protection ke important methods hain.",
+
+                example:
+                    "Koi person phone par khud ko bank employee batakar OTP maange. Identity verify kiye bina sensitive information share karna dangerous ho sakta hai.",
+
+                code:
+                    `STOP
+
+Verify identity
+Verify request
+Never share OTP
+Never rush
+Use official contact method`,
+
+                practice:
+                    "Ek suspicious phone call/message ke liye 5 verification questions likho jo tum use karoge.",
+
+                learned:
+                    "Human manipulation based attacks ko identify karna."
+            },
+
+
+            {
+                title: "Security Checklist",
+
+                definition:
+                    "Personal cybersecurity checklist ek regular routine hai jisme important accounts, devices, software aur online habits ki security review ki jati hai. Security ek one-time activity nahi hai; threats aur technology change hote rehte hain. Regular updates, backups, MFA, password hygiene aur suspicious activity monitoring se overall security improve ki ja sakti hai.",
+
+                example:
+                    "Har month accounts ki security settings review karna aur important data ka backup verify karna ek simple security routine hai.",
+
+                code:
+                    `Monthly checklist:
+
+[ ] Updates
+[ ] MFA
+[ ] Password review
+[ ] Backup
+[ ] Account activity
+[ ] App permissions
+[ ] Suspicious messages`,
+
+                practice:
+                    "Apne liye ek personal cybersecurity checklist banao aur usko regularly review karne ka routine set karo.",
+
+                learned:
+                    "Everyday cybersecurity ko routine ka part banana."
+            }
+
+        ],
+
+
+        /* ==========================================
+           WINDOWS
+           ========================================== */
+
+        windows: [
+
+            {
+                title: "Windows Basics",
+
+                definition:
+                    "Windows ek operating system hai jo computer ke hardware aur software resources ko manage karta hai aur user ko graphical interface provide karta hai. Operating system applications run karne, files manage karne, devices communicate karne aur system resources ko coordinate karne mein important role play karta hai.",
+
+                example:
+                    "Desktop, Start Menu, File Explorer, Settings aur Taskbar Windows operating system ke common parts hain.",
+
+                code:
+                    `Useful shortcuts:
+
+Win + E → File Explorer
+Win + I → Settings
+Win + R → Run
+Ctrl + Shift + Esc → Task Manager`,
+
+                practice:
+                    "Upar diye shortcuts ko try karo aur dekho har shortcut kya open karta hai.",
+
+                learned:
+                    "Windows operating system aur basic interface."
+            },
+
+
+            {
+                title: "Keyboard Shortcuts",
+
+                definition:
+                    "Keyboard shortcuts specific actions ko quickly perform karne ke liye predefined key combinations hote hain. Shortcuts mouse movements ko reduce kar sakte hain aur repetitive computer tasks ko faster bana sakte hain. Windows mein common shortcuts editing, navigation, application switching aur system tools ke liye available hain.",
+
+                example:
+                    "Text copy karne ke liye Ctrl+C aur paste karne ke liye Ctrl+V use karna common keyboard shortcut ka example hai.",
+
+                code:
+                    `Ctrl + C → Copy
+Ctrl + V → Paste
+Ctrl + X → Cut
+Ctrl + Z → Undo
+Alt + Tab → Switch apps
+Win + Shift + S → Screenshot`,
+
+                practice:
+                    "Ek din mein kam se kam 5 shortcuts intentionally use karne ki practice karo.",
+
+                learned:
+                    "Useful Windows keyboard shortcuts."
+            },
+
+
+            {
+                title: "Files and Folders",
+
+                definition:
+                    "Files digital information ko store karti hain, jabki folders files ko organize karne mein help karte hain. Proper folder structure se documents, photos, projects aur downloads ko easily locate aur manage kiya ja sakta hai. File names aur folder organization future mein search aur backup ko bhi easier bana sakte hain.",
+
+                example:
+                    "Documents folder ke andar College, Projects aur Personal jaise folders create karke files organize karna useful structure ho sakta hai.",
+
+                code:
+                    `Example structure:
+
+Documents/
+ ├── College/
+ ├── Projects/
+ └── Personal/`,
+
+                practice:
+                    "Apne computer mein ek organized folder structure banao aur existing files ko suitable folders mein arrange karo.",
+
+                learned:
+                    "Windows mein files aur folders ko properly organize karna."
+            },
+
+
+            {
+                title: "Task Manager",
+
+                definition:
+                    "Task Manager Windows ka system utility hai jo running applications, processes, CPU, memory, disk aur network usage jaise information provide karta hai. Iska use unresponsive applications ko identify karne, resource usage observe karne aur basic troubleshooting mein kiya ja sakta hai.",
+
+                example:
+                    "Agar laptop slow ho gaya hai, Task Manager mein CPU aur Memory usage check karke high-resource application identify ki ja sakti hai.",
+
+                code:
+                    `Ctrl + Shift + Esc
+
+Check:
+
+CPU
+Memory
+Disk
+Network
+Running apps`,
+
+                practice:
+                    "Task Manager open karke dekho kaunsa application sabse zyada memory use kar raha hai.",
+
+                learned:
+                    "Task Manager se system resource usage observe karna."
+            },
+
+
+            {
+                title: "Storage Management",
+
+                definition:
+                    "Storage management ka matlab computer ke available disk space ko monitor aur organize karna hai. Temporary files, downloads, unused applications aur large media files time ke saath storage consume kar sakte hain. Regular cleanup se unnecessary data identify aur remove kiya ja sakta hai, lekin important files delete karne se pehle verify karna zaroori hai.",
+
+                example:
+                    "Downloads folder mein purane setup files aur unnecessary videos storage ka significant amount consume kar sakte hain.",
+
+                code:
+                    `Settings
+→ System
+→ Storage`,
+
+                practice:
+                    "Windows Storage settings open karke dekho kaunsi category sabse zyada space use kar rahi hai.",
+
+                learned:
+                    "Storage usage identify aur manage karna."
+            },
+
+
+            {
+                title: "Device Manager and Drivers",
+
+                definition:
+                    "Device Manager Windows ka utility hai jo computer se connected hardware devices aur unke drivers ko display karta hai. Drivers software components hote hain jo operating system ko hardware devices ke saath communicate karne mein help karte hain. Incorrect, missing ya outdated drivers kabhi-kabhi hardware functionality problems ka reason ho sakte hain.",
+
+                example:
+                    "Keyboard, mouse, display adapter aur network adapter Device Manager mein different categories ke under appear ho sakte hain.",
+
+                code:
+                    `Win + X
+→ Device Manager`,
+
+                practice:
+                    "Device Manager open karke apne keyboard, display aur network adapter ki entries identify karo.",
+
+                learned:
+                    "Devices aur drivers ka basic relationship."
+            },
+
+
+            {
+                title: "Windows Security",
+
+                definition:
+                    "Windows Security Windows mein built-in security features provide karta hai jo malware protection, firewall aur other security controls mein help karte hain. Security settings ko properly configured aur updated rakhna system protection ka important part hai. Users ko suspicious downloads aur unsafe links se bhi cautious rehna chahiye.",
+
+                example:
+                    "Windows Security mein protection status check karna aur available security updates install karna basic defensive practice hai.",
+
+                code:
+                    `Settings
+→ Privacy & security
+→ Windows Security`,
+
+                practice:
+                    "Windows Security open karke apne device ka current protection status review karo.",
+
+                learned:
+                    "Windows ke built-in security features ka basic overview."
+            },
+
+
+            {
+                title: "Performance Optimization",
+
+                definition:
+                    "Computer performance optimization ka matlab system ke available resources ko efficiently use karne aur unnecessary load ko reduce karne ki process hai. Slow computer ka reason sirf ek problem nahi hota; insufficient storage, background applications, startup programs, outdated drivers ya hardware limitations bhi factors ho sakte hain.",
+
+                example:
+                    "Agar startup ke waqt bahut saare unnecessary applications automatically launch ho rahe hain, to boot time badh sakta hai.",
+
+                code:
+                    `Task Manager
+→ Startup apps
+
+Review unnecessary startup programs.`,
+
+                practice:
+                    "Startup Apps list review karo aur unknown ya unnecessary items ko disable karne se pehle unka purpose verify karo.",
+
+                learned:
+                    "Windows performance issues ko systematically identify karna."
+            },
+
+
+            {
+                title: "Troubleshooting",
+
+                definition:
+                    "Troubleshooting ek systematic process hai jisme computer problem ka cause identify karke possible solution test kiya jata hai. Guess karne ke bajay symptoms observe karna, recent changes check karna, simple solutions try karna aur result verify karna effective troubleshooting ka basic method hai.",
+
+                example:
+                    "Agar internet nahi chal raha, pehle Wi-Fi connection, airplane mode, router aur network status check karna systematic troubleshooting ka example hai.",
+
+                code:
+                    `Problem
 ↓
-
-Check
-
+Observe symptoms
 ↓
-
-Verify
-
+Check recent changes
 ↓
+Try safe solution
+↓
+Test result
+↓
+Escalate if needed`,
 
-Act`
-                },
+                practice:
+                    "Kisi small Windows issue ke liye upar wala troubleshooting flow use karke steps likho.",
 
-                {
-                    title: "Password Security",
-                    text:
-                        "Strong aur unique passwords account security ka basic foundation hain.",
-                    points: [
-                        "Long passwords",
-                        "Unique passwords",
-                        "Password manager",
-                        "Password reuse avoid karo"
-                    ],
-                    code:
-                        `Account A
-→ Unique Password
+                learned:
+                    "Computer problems ko systematic way mein troubleshoot karna."
+            },
 
-Account B
-→ Different Password`
-                },
 
-                {
-                    title: "Multi Factor Authentication",
-                    text:
-                        "MFA password ke saath additional verification layer add karta hai.",
-                    points: [
-                        "Authenticator app",
-                        "Security key",
-                        "Backup codes",
-                        "Recovery options"
-                    ],
-                    code:
-                        `Password
+            {
+                title: "Backup and Maintenance",
+
+                definition:
+                    "Backup ka matlab important data ki additional copy maintain karna hai taaki original files lost, corrupted ya accidentally deleted hone par recovery possible ho. Maintenance mein updates, storage review, security checks aur backup verification jaise regular tasks shamil ho sakte hain. Backup tabhi useful hai jab files actually recover ki ja sakti hon, isliye backup ko periodically verify karna important hai.",
+
+                example:
+                    "Important documents ki ek additional copy external drive ya trusted cloud storage mein rakhna backup ka example hai.",
+
+                code:
+                    `Important files
+      ↓
+Backup copy
+      ↓
+Different storage
+      ↓
+Periodic verification`,
+
+                practice:
+                    "Apni 5 most-important files identify karo aur unke backup ka safe plan banao.",
+
+                learned:
+                    "Backup aur basic computer maintenance ka importance."
+            }
+
+        ],
+
+
+        /* ==========================================
+           ONLINE SAFETY
+           ========================================== */
+
+        safety: [
+
+            {
+                title: "What is Online Safety?",
+
+                definition:
+                    "Online safety ka matlab internet use karte waqt apne accounts, devices, personal information, privacy aur digital identity ko unnecessary risks se protect karna hai. Internet par safe rehne ke liye strong passwords, MFA, careful browsing, software updates, privacy settings aur scam awareness jaise habits important hain.",
+
+                example:
+                    "Unknown website par personal information enter karne se pehle website aur request verify karna online safety ka simple example hai.",
+
+                code:
+                    `Before sharing information:
+
+Who is asking?
+Why do they need it?
+Is the website genuine?
+Do I really need to share it?`,
+
+                practice:
+                    "Kisi bhi online form mein information submit karne se pehle upar ke questions check karo.",
+
+                learned:
+                    "Online safety ka basic meaning aur safe internet habits."
+            },
+
+
+            {
+                title: "Strong Passwords",
+
+                definition:
+                    "Strong password aisa password hota hai jise guess karna difficult ho aur jo kisi doosre account ke password se reused na ho. Password length, uniqueness aur randomness security improve kar sakte hain. Important accounts ke liye password manager unique passwords create aur store karne mein helpful ho sakta hai.",
+
+                example:
+                    "Har account ke liye alag strong password use karna aur passwords ko openly notes ya messages mein store na karna safer practice hai.",
+
+                code:
+                    `Good:
+
+Unique password
++ Long password
++ Password manager
++ MFA`,
+
+                practice:
+                    "Apne important accounts identify karo aur check karo ki same password multiple places par to use nahi ho raha.",
+
+                learned:
+                    "Strong aur unique passwords ka importance."
+            },
+
+
+            {
+                title: "Two-Factor Authentication",
+
+                definition:
+                    "Two-Factor Authentication ya 2FA account login ke liye password ke saath ek additional verification factor require karta hai. Ye second factor authenticator app, security key ya service-supported verification method ho sakta hai. 2FA password compromise hone ki situation mein additional protection provide kar sakta hai.",
+
+                example:
+                    "Password enter karne ke baad authenticator app se verification complete karna 2FA ka example hai.",
+
+                code:
+                    `Password
 +
 Second Factor
 =
-Stronger Account`
-                },
-
-                {
-                    title: "Phishing",
-                    text:
-                        "Phishing messages users ko trick karke information ya access lene ki koshish karte hain.",
-                    points: [
-                        "Fake sender",
-                        "Urgency",
-                        "Suspicious links",
-                        "Unexpected attachments"
-                    ],
-                    code:
-                        `Unexpected Message
-
-↓
-
-STOP
-
-↓
-
-Verify Sender
-
-↓
-
-Then Act`
-                },
-
-                {
-                    title: "Malware Basics",
-                    text:
-                        "Malware malicious software hota hai jo unauthorized ya harmful activity kar sakta hai.",
-                    points: [
-                        "Virus",
-                        "Trojan",
-                        "Ransomware",
-                        "Spyware"
-                    ],
-                    code:
-                        `Unknown File
-
-↓
-
-Don't Open
-
-↓
-
-Verify Source`
-                },
-
-                {
-                    title: "Network Security",
-                    text:
-                        "Safer networking ke liye secure Wi-Fi, updates aur trusted connections important hain.",
-                    points: [
-                        "Router security",
-                        "HTTPS",
-                        "Wi-Fi security",
-                        "Updates"
-                    ],
-                    code:
-                        `Secure Wi-Fi
-+
-HTTPS
-+
-Updates
-=
-Safer Browsing`
-                },
-
-                {
-                    title: "Encryption Basics",
-                    text:
-                        "Encryption readable information ko protected form mein transform karta hai.",
-                    points: [
-                        "Plaintext",
-                        "Ciphertext",
-                        "Keys",
-                        "HTTPS"
-                    ],
-                    code:
-                        `Plaintext
-   ↓
-Encryption
-   ↓
-Ciphertext`
-                },
-
-                {
-                    title: "Social Engineering",
-                    text:
-                        "Social engineering mein attacker technology ke bajay human behavior ko manipulate karne ki koshish karta hai.",
-                    points: [
-                        "Impersonation",
-                        "Urgency",
-                        "Fake authority",
-                        "Verification"
-                    ],
-                    code:
-                        `Unexpected Request
-
-↓
-
-Pause
-
-↓
-
-Verify Independently`
-                },
-
-                {
-                    title: "Security Checklist",
-                    text:
-                        "Daily digital safety ke liye kuch simple habits follow karo.",
-                    points: [
-                        "Updates",
-                        "MFA",
-                        "Unique passwords",
-                        "Backups"
-                    ],
-                    code:
-                        `UPDATE
-+
-MFA
-+
-BACKUP
-+
-AWARENESS`
-                }
-
-            ]
-        },
-
-
-        {
-            id: "windows",
-            icon: "🪟",
-            title: "Windows & Computer Tips",
-            description:
-                "Windows aur computer ko efficiently use karna aur common problems solve karna seekho.",
-            tags: ["Windows", "PC", "Tips"],
-            lessons: [
-
-                {
-                    title: "Windows Basics",
-                    text:
-                        "Windows mein Start menu, Settings aur File Explorer everyday tasks ke liye important hain.",
-                    points: [
-                        "Desktop",
-                        "Start menu",
-                        "Settings",
-                        "File Explorer"
-                    ],
-                    code:
-                        `Win + E
-
-→ File Explorer`
-                },
-
-                {
-                    title: "Keyboard Shortcuts",
-                    text:
-                        "Keyboard shortcuts computer par kaam ko faster bana sakte hain.",
-                    points: [
-                        "Win + E",
-                        "Alt + Tab",
-                        "Ctrl + C",
-                        "Ctrl + V"
-                    ],
-                    code:
-                        `Win + E
-Alt + Tab
-Ctrl + C
-Ctrl + V`
-                },
-
-                {
-                    title: "Task Manager",
-                    text:
-                        "Task Manager se running applications aur system resources monitor kiye ja sakte hain.",
-                    points: [
-                        "Processes",
-                        "CPU",
-                        "Memory",
-                        "Startup apps"
-                    ],
-                    code:
-                        `Ctrl + Shift + Esc`
-                },
-
-                {
-                    title: "Storage Management",
-                    text:
-                        "Storage ko organized rakhne se unnecessary files aur space problems ko manage karna easy hota hai.",
-                    points: [
-                        "Temporary files",
-                        "Downloads",
-                        "Recycle Bin",
-                        "Storage settings"
-                    ],
-                    code:
-                        `Settings
-→ System
-→ Storage`
-                },
-
-                {
-                    title: "Device Manager",
-                    text:
-                        "Device Manager hardware devices aur drivers ko inspect karne mein help karta hai.",
-                    points: [
-                        "Drivers",
-                        "Device status",
-                        "Hardware",
-                        "Troubleshooting"
-                    ],
-                    code:
-                        `Win + X
-
-→ Device Manager`
-                },
-
-                {
-                    title: "PC Performance",
-                    text:
-                        "Startup apps aur unnecessary background processes ko manage karna performance improve kar sakta hai.",
-                    points: [
-                        "Startup apps",
-                        "Free storage",
-                        "Updates",
-                        "Resource monitoring"
-                    ],
-                    code:
-                        `Task Manager
-→ Startup Apps
-
-Disable unnecessary apps`
-                },
-
-                {
-                    title: "Windows Security",
-                    text:
-                        "Windows ke built-in security features ko updated rakhna important hai.",
-                    points: [
-                        "Windows Security",
-                        "Firewall",
-                        "Updates",
-                        "Defender"
-                    ],
-                    code:
-                        `Settings
-→ Privacy & Security
-→ Windows Security`
-                },
-
-                {
-                    title: "Backup Basics",
-                    text:
-                        "Important files ka backup accidental deletion ya hardware failure se protection deta hai.",
-                    points: [
-                        "External drive",
-                        "Cloud backup",
-                        "Multiple copies",
-                        "Restore testing"
-                    ],
-                    code:
-                        `Important Files
-      ↓
-Backup
-      ↓
-Verify Backup`
-                },
-
-                {
-                    title: "Troubleshooting",
-                    text:
-                        "Problem aane par random changes karne ke bajay step-by-step troubleshooting karo.",
-                    points: [
-                        "Observe problem",
-                        "Restart",
-                        "Check updates",
-                        "Check settings"
-                    ],
-                    code:
-                        `Problem
- ↓
-Observe
- ↓
-Test
- ↓
-Fix
- ↓
-Verify`
-                },
-
-                {
-                    title: "Computer Maintenance",
-                    text:
-                        "Regular updates, backups aur file organization computer ko maintain karne mein help karte hain.",
-                    points: [
-                        "Update software",
-                        "Clean downloads",
-                        "Backup files",
-                        "Organize folders"
-                    ],
-                    code:
-                        `Update
-+
-Backup
-+
-Organize
-=
-Better Maintenance`
-                }
-
-            ]
-        },
-
-
-        {
-            id: "safety",
-            icon: "🔐",
-            title: "Online Safety",
-            description:
-                "Internet par accounts, privacy aur personal information ko safer rakhna seekho.",
-            tags: ["Privacy", "Internet", "Safety"],
-            lessons: [
-
-                {
-                    title: "Online Safety Basics",
-                    text:
-                        "Internet use karte waqt trust, verification aur privacy ka dhyan rakhna important hai.",
-                    points: [
-                        "Privacy",
-                        "Verification",
-                        "Trusted websites",
-                        "Secure browsing"
-                    ],
-                    code:
-                        `Pause
-↓
-Check
-↓
-Verify
-↓
-Continue`
-                },
-
-                {
-                    title: "Strong Passwords",
-                    text:
-                        "Har important account ke liye long aur unique password use karna better security habit hai.",
-                    points: [
-                        "Long",
-                        "Unique",
-                        "Random",
-                        "Password manager"
-                    ],
-                    code:
-                        `Email
-→ Unique Password
-
-Instagram
-→ Different Password
-
-Bank
-→ Different Password`
-                },
-
-                {
-                    title: "Two Factor Authentication",
-                    text:
-                        "2FA password compromise hone par additional protection provide kar sakta hai.",
-                    points: [
-                        "Authenticator",
-                        "Security key",
-                        "Backup codes",
-                        "Recovery"
-                    ],
-                    code:
-                        `Password
-+
-2FA
-=
-Extra Protection`
-                },
-
-                {
-                    title: "Email Safety",
-                    text:
-                        "Unknown emails ke links aur attachments ko open karne se pehle verify karo.",
-                    points: [
-                        "Sender check",
-                        "Links",
-                        "Attachments",
-                        "Urgency"
-                    ],
-                    code:
-                        `Unexpected Email
-      ↓
-Check Sender
-      ↓
-Verify
-      ↓
-Open only if safe`
-                },
-
-                {
-                    title: "Social Media Safety",
-                    text:
-                        "Social media par unnecessary personal information publicly share nahi karni chahiye.",
-                    points: [
-                        "Privacy settings",
-                        "Location",
-                        "Public posts",
-                        "Unknown contacts"
-                    ],
-                    code:
-                        `Personal Info
-→ Keep Private
-
-Public Post
-→ Think Before Sharing`
-                },
-
-                {
-                    title: "Safe Downloads",
-                    text:
-                        "Software aur files ko trusted official sources se download karna safer practice hai.",
-                    points: [
-                        "Official sources",
-                        "Software updates",
-                        "File verification",
-                        "Unknown files avoid"
-                    ],
-                    code:
-                        `Official Source
-      ↓
-Download
-      ↓
-Verify
-      ↓
-Install`
-                },
-
-                {
-                    title: "Online Scams",
-                    text:
-                        "Scammers fake rewards, urgent messages aur impersonation ka use kar sakte hain.",
-                    points: [
-                        "Fake offers",
-                        "Impersonation",
-                        "Payment requests",
-                        "Urgency"
-                    ],
-                    code:
-                        `Urgent Request?
-
-STOP
-
-VERIFY
-
-Then Decide`
-                },
-
-                {
-                    title: "Privacy Settings",
-                    text:
-                        "Apps ko sirf wahi permissions do jo unke kaam ke liye genuinely required hain.",
-                    points: [
-                        "Location",
-                        "Camera",
-                        "Microphone",
-                        "Contacts"
-                    ],
-                    code:
-                        `App Permission
-
-Ask:
-
-"Does this app
-really need it?"`
-                },
-
-                {
-                    title: "Account Recovery",
-                    text:
-                        "Recovery email, phone aur backup codes ko secure aur updated rakhna important hai.",
-                    points: [
-                        "Recovery email",
-                        "Phone",
-                        "Backup codes",
-                        "Trusted devices"
-                    ],
-                    code:
-                        `Main Account
-      ↓
-Recovery Method
-      ↓
-Backup Codes`
-                },
-
-                {
-                    title: "Online Safety Checklist",
-                    text:
-                        "Har month basic account aur device security check karne ki habit banao.",
-                    points: [
-                        "Update devices",
-                        "Review accounts",
-                        "Enable MFA",
-                        "Backup important data"
-                    ],
-                    code:
-                        `UPDATE
-↓
-MFA
-↓
-REVIEW
-↓
-BACKUP`
-                }
-
-            ]
-        }
-
-    ];
-
-
-    let activeLearningCourse = null;
-
-    let activeLearningLesson = 0;
-
-
-    function showLearningCourses() {
-
-        const grid =
-            document.getElementById("learningGrid");
-
-        grid.innerHTML = "";
-
-
-        learningCourses.forEach(course => {
-
-            const card =
-                document.createElement("div");
-
-            card.className = "learning-card";
-
-
-            card.innerHTML = `
-
-            <div class="learning-icon">
-                ${course.icon}
-            </div>
-
-            <h3>
-                ${course.title}
-            </h3>
-
-            <p>
-                ${course.description}
-            </p>
-
-            <div class="learning-tags">
-
-                ${course.tags
-                    .map(tag =>
-                        `<span>${tag}</span>`
-                    )
-                    .join("")}
-
-                <span>
-                    ${course.lessons.length} Lessons
-                </span>
-
-            </div>
-
-            <button
-                class="learning-start"
-                onclick="openLearningCourse('${course.id}')">
-
-                Start Learning →
-
-            </button>
-
-        `;
-
-
-            grid.appendChild(card);
-
-        });
-
-    }
-
-
-    function openLearningCourse(courseId) {
-
-        activeLearningCourse =
-            learningCourses.find(
-                course => course.id === courseId
-            );
-
-
-        activeLearningLesson = 0;
-
-
-        document.getElementById("learningGrid")
-            .style.display = "none";
-
-
-        document.getElementById("coursePanel")
+Stronger Account Protection`,
+
+                practice:
+                    "Apne primary email aur social media accounts mein 2FA availability check karo.",
+
+                learned:
+                    "2FA ka purpose aur account protection."
+            },
+
+
+            {
+                title: "Phishing and Fake Links",
+
+                definition:
+                    "Fake links aur phishing messages users ko fraudulent websites par le ja sakte hain jahan sensitive information collect karne ya harmful action karwane ki koshish ho sakti hai. Link ko sirf message ke visible text se trust nahi karna chahiye; actual domain aur context verify karna important hai.",
+
+                example:
+                    "Message mein 'bank.com' jaisa text ho sakta hai, lekin actual link kisi completely different domain par point kar sakta hai.",
+
+                code:
+                    `Before opening:
+
+Check sender
+Check actual URL
+Check domain spelling
+Avoid urgency
+Use official website directly`,
+
+                practice:
+                    "Suspicious link ko open kiye bina uska actual domain identify karne ki practice karo.",
+
+                learned:
+                    "Fake links aur phishing URLs ko identify karne ke basics."
+            },
+
+
+            {
+                title: "Social Media Privacy",
+
+                definition:
+                    "Social media privacy ka matlab ye control karna hai ki tumhari personal information, posts, location, contact information aur other digital details kaun dekh sakta hai aur kaunse platforms ya applications un information ko access kar sakte hain. Privacy settings ko regularly review karna important hai kyunki platforms ke features aur settings change ho sakte hain.",
+
+                example:
+                    "Public profile par phone number ya precise personal information share karne ke bajay privacy settings ke through visibility limit karna safer approach ho sakta hai.",
+
+                code:
+                    `Privacy review:
+
+Profile visibility
+Location sharing
+Contact information
+Tagged posts
+Connected apps`,
+
+                practice:
+                    "Apne social media account ki privacy settings open karke har major option review karo.",
+
+                learned:
+                    "Social media privacy ko consciously manage karna."
+            },
+
+
+            {
+                title: "Safe Downloads",
+
+                definition:
+                    "Internet se files download karte waqt source ki reliability check karna important hai. Unknown websites, suspicious advertisements, pirated software aur modified applications malware ya unwanted software ka risk badha sakte hain. Official developer website ya trusted distribution source ko preference dena safer practice hai.",
+
+                example:
+                    "Kisi software ka download official developer website se karna random pop-up website se download karne se generally safer approach hai.",
+
+                code:
+                    `Before download:
+
+Trusted source?
+Correct website?
+Expected file?
+Need this software?
+Security scan available?`,
+
+                practice:
+                    "Apne computer mein installed software ki official source websites identify karo.",
+
+                learned:
+                    "Safe downloading ke basic principles."
+            },
+
+
+            {
+                title: "Online Scams",
+
+                definition:
+                    "Online scam ek fraudulent scheme hoti hai jisme scammer paisa, personal information, account access ya other benefit obtain karne ke liye victim ko deceive karta hai. Scams fake jobs, investment promises, prize messages, impersonation, fake customer support aur urgent payment requests jaise forms mein aa sakte hain.",
+
+                example:
+                    "'Congratulations! You won a prize. Pay a small fee to receive it.' Aise unexpected prize/payment requests scam ka warning sign ho sakte hain.",
+
+                code:
+                    `STOP
+
+Unexpected offer?
+Urgent payment?
+Personal information request?
+Unknown sender?
+
+→ Verify independently.`,
+
+                practice:
+                    "Ek hypothetical scam message read karke usmein kam se kam 3 red flags identify karo.",
+
+                learned:
+                    "Common online scam patterns aur warning signs."
+            },
+
+
+            {
+                title: "App Permissions",
+
+                definition:
+                    "App permissions determine karti hain ki mobile ya computer application ko device ke kaunse resources ya information tak access mil sakta hai. Camera, microphone, location, contacts aur files jaise permissions sensitive ho sakti hain. User ko permissions ko app ke actual purpose ke according review karna chahiye aur unnecessary access avoid karna chahiye.",
+
+                example:
+                    "Ek simple calculator application ko contacts access ki requirement suspicious ho sakti hai, isliye permission request ko blindly accept nahi karna chahiye.",
+
+                code:
+                    `Review:
+
+Camera
+Microphone
+Location
+Contacts
+Files
+Notifications`,
+
+                practice:
+                    "Apne phone mein 3 frequently-used apps ki permissions review karo aur dekho kya access actually necessary hai.",
+
+                learned:
+                    "App permissions ko review karne ka importance."
+            },
+
+
+            {
+                title: "Account Recovery",
+
+                definition:
+                    "Account recovery methods users ko password bhoolne, device lose hone ya account access problem hone par account regain karne mein help karte hain. Recovery email, recovery phone number, backup codes aur other service-supported methods important ho sakte hain. Recovery information ko updated aur secure rakhna account security ka part hai.",
+
+                example:
+                    "Agar primary phone available nahi hai, properly configured recovery method account access restore karne mein help kar sakta hai.",
+
+                code:
+                    `Recovery checklist:
+
+Recovery email
+Recovery phone
+Backup codes
+Trusted devices
+MFA recovery method`,
+
+                practice:
+                    "Apne primary email account ki recovery options review karo aur outdated information update karo.",
+
+                learned:
+                    "Account recovery ko pehle se prepare karna."
+            },
+
+
+            {
+                title: "Complete Online Safety Checklist",
+
+                definition:
+                    "Online safety ek single setting nahi hai, balki multiple security habits ka combination hai. Strong unique passwords, MFA, careful link checking, privacy management, safe downloads, app permission review, software updates aur account recovery preparation milkar overall digital safety improve karte hain. Regular review important hai kyunki online threats aur services dono continuously change hote rehte hain.",
+
+                example:
+                    "Har month apne important accounts, devices, permissions aur privacy settings ki short security review karna ek practical routine ho sakta hai.",
+
+                code:
+                    `ONLINE SAFETY CHECKLIST
+
+[ ] Unique passwords
+[ ] MFA enabled
+[ ] Software updated
+[ ] Suspicious links avoided
+[ ] Privacy reviewed
+[ ] App permissions reviewed
+[ ] Backup available
+[ ] Recovery information updated`,
+
+                practice:
+                    "Is checklist ko apni personal security routine banao aur har item ko honestly review karo.",
+
+                learned:
+                    "Online safety ko daily digital life ka regular part kaise banana hai."
+            }
+
+        ]
+
+    };
+
+
+    /* ==========================================
+       COURSE SYSTEM
+       ========================================== */
+
+    let currentCourse = null;
+    let currentLesson = 0;
+
+
+    function openCourse(courseName) {
+
+        currentCourse = courseName;
+        currentLesson = 0;
+
+        document
+            .getElementById("lessonArea")
             .classList.add("active");
 
+        showLesson();
 
-        document.getElementById("courseTitle")
-            .textContent =
-            activeLearningCourse.icon +
-            " " +
-            activeLearningCourse.title;
-
-
-        document.getElementById("courseDescription")
-            .textContent =
-            activeLearningCourse.description;
-
-
-        renderLearningLessons();
-
-        renderLearningLesson();
-
-
-        document.getElementById("coursePanel")
+        document
+            .getElementById("lessonArea")
             .scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+                behavior: "smooth"
             });
-
     }
 
 
-    function renderLearningLessons() {
-
-        const list =
-            document.getElementById("lessonList");
-
-
-        list.innerHTML = "";
-
-
-        activeLearningCourse.lessons.forEach(
-            (lesson, index) => {
-
-                const button =
-                    document.createElement("button");
-
-
-                button.className =
-                    "lesson-button" +
-                    (index === activeLearningLesson
-                        ? " active"
-                        : "");
-
-
-                button.textContent =
-                    (index + 1) +
-                    ". " +
-                    lesson.title;
-
-
-                button.onclick = function () {
-
-                    activeLearningLesson = index;
-
-                    renderLearningLessons();
-
-                    renderLearningLesson();
-
-                };
-
-
-                list.appendChild(button);
-
-            }
-        );
-
-    }
-
-
-    function renderLearningLesson() {
+    function showLesson() {
 
         const lesson =
-            activeLearningCourse
-                .lessons[activeLearningLesson];
+            courses[currentCourse][currentLesson];
+
+        document.getElementById("lessonNumber")
+            .textContent =
+            "LESSON " +
+            (currentLesson + 1) +
+            " OF 10";
 
 
         document.getElementById("lessonTitle")
             .textContent =
-            "Lesson " +
-            (activeLearningLesson + 1) +
-            " — " +
             lesson.title;
 
 
-        document.getElementById("lessonBody")
-            .innerHTML = `
-
-            <p>
-                ${lesson.text}
-            </p>
+        document.getElementById("lessonDefinition")
+            .textContent =
+            lesson.definition;
 
 
-            <h5>
-                ⭐ Main Points
-            </h5>
+        document.getElementById("lessonExample")
+            .textContent =
+            lesson.example;
 
 
-            <ul>
-
-                ${lesson.points
-                .map(point =>
-                    `<li>${point}</li>`
-                )
-                .join("")}
-
-            </ul>
+        document.getElementById("lessonCode")
+            .textContent =
+            lesson.code;
 
 
-            <h5>
-                💻 Example
-            </h5>
+        document.getElementById("lessonPractice")
+            .textContent =
+            lesson.practice;
 
 
-            <div class="code-area">
-
-                <button
-                    class="copy-button"
-                    onclick="copyLearningCode(this)">
-
-                    Copy
-
-                </button>
-
-
-                <pre>${escapeLearningHtml(
-                    lesson.code
-                )}</pre>
-
-            </div>
-
-
-            <h5>
-                📝 Practice
-            </h5>
-
-
-            <p>
-                Is example ko khud type karke run karo.
-                Phir code mein chhota change karke dekho
-                ki output kaise change hota hai.
-            </p>
-
-        `;
-
-
-        const progress =
-            (
-                (activeLearningLesson + 1) /
-                activeLearningCourse.lessons.length
-            ) * 100;
-
-
-        document.getElementById("courseProgress")
-            .style.width =
-            progress + "%";
-
-
-        document.getElementById("previousLesson")
-            .disabled =
-            activeLearningLesson === 0;
-
-
-        document.getElementById("nextLesson")
-            .disabled =
-            activeLearningLesson ===
-            activeLearningCourse.lessons.length - 1;
+        document.getElementById("lessonLearned")
+            .textContent =
+            lesson.learned;
 
     }
 
 
-    function changeLearningLesson(direction) {
-
-        const newLesson =
-            activeLearningLesson + direction;
-
+    function nextLesson() {
 
         if (
-            newLesson >= 0 &&
-            newLesson <
-            activeLearningCourse.lessons.length
+            currentLesson <
+            courses[currentCourse].length - 1
         ) {
 
-            activeLearningLesson =
-                newLesson;
+            currentLesson++;
 
+            showLesson();
 
-            renderLearningLessons();
+            document
+                .getElementById("lessonArea")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
 
-            renderLearningLesson();
+        } else {
+
+            alert(
+                "🎉 Congratulations! You completed all 10 lessons of this course."
+            );
 
         }
 
     }
 
 
-    function closeLearningCourse() {
+    function previousLesson() {
 
-        document.getElementById("coursePanel")
+        if (currentLesson > 0) {
+
+            currentLesson--;
+
+            showLesson();
+
+        }
+
+    }
+
+
+    function closeCourse() {
+
+        document
+            .getElementById("lessonArea")
             .classList.remove("active");
 
-
-        document.getElementById("learningGrid")
-            .style.display = "grid";
-
-
-        document.getElementById("learning-hub")
+        document
+            .querySelector(".learning-hub")
             .scrollIntoView({
                 behavior: "smooth"
             });
 
     }
-
-
-    function copyLearningCode(button) {
-
-        const code =
-            button
-                .nextElementSibling
-                .innerText;
-
-
-        navigator.clipboard
-            .writeText(code)
-            .then(() => {
-
-                button.textContent =
-                    "Copied!";
-
-
-                setTimeout(() => {
-
-                    button.textContent =
-                        "Copy";
-
-                }, 1200);
-
-            });
-
-    }
-
-
-    function escapeLearningHtml(text) {
-
-        return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;");
-
-    }
-
-
-    showLearningCourses();
 
 </script>
 </body>
